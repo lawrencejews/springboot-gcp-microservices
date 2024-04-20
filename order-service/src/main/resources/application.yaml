@@ -1,9 +1,11 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
+  application:
+    name: ORDER-SERVICE
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/productdb
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/orderdb
     username: root
     password: Lubuusi@4663
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -11,8 +13,6 @@ spring:
     datasource=platform: org.hibernate.dialect.MySQL57InnoDBDialect
     hibernate:
       ddl-auto: update
-  application:
-    name: PRODUCT-SERVICE
 
 eureka:
   instance:
