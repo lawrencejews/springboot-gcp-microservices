@@ -1,6 +1,7 @@
 package com.lawrencejews.orderservice.service;
 
 import com.lawrencejews.orderservice.entity.Order;
+import com.lawrencejews.orderservice.external.client.ProductService;
 import com.lawrencejews.orderservice.model.OrderRequest;
 import com.lawrencejews.orderservice.repository.OrderRepository;
 import lombok.extern.log4j.Log4j2;
@@ -14,12 +15,19 @@ import java.time.Instant;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private ProductService productService;
+
     @Override
     public long placeOrder(OrderRequest orderRequest) {
 
         // Order Entity -> Save the Data with Status Order Created.
         log.info("Placing Order Request: {}", orderRequest);
 
+        // Product Service -> Block Products(Reduce the Quantity)
+        productService.reduceQuantity(orderRequest.getProductId(),orderRequest.getQuantity());
+
+        log.info("Creating Order with Status CREATED");
         Order order = Order.builder()
                 .amount(orderRequest.getTotalAmount())
                 .orderStatus("CREATED")
@@ -31,8 +39,6 @@ public class OrderServiceImpl implements OrderService {
         log.info("Order Placed Successfully with Order Id: {}", order.getId());
 
         return order.getId();
-
-        // Product Service -> Block Products(Reduce the Quantity)
 
         //Payment Service -> Payments -> Success -> COMPLETE, Else
 
