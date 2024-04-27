@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("payment")
+@RequestMapping("/payment")
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
