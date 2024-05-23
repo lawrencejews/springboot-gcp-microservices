@@ -15,3 +15,7 @@
 - Define GROUPS  for Admin and Customer -> PEOPLE attached to groups then -> use them in claims-security tab.
 - `NOTE`: Create a new claim for the project by attaching the created groups.
 - Add SpringBoot dependencies for okta ` <artifactId>okta-spring-boot-starter</artifactId>` and spring security `<artifactId>spring-boot-starter-security</artifactId>` .
+#### Unit Testing - JUNIT
+- Mockito: vital role in developing testable applications.
+- wireMock: Create stable test and development environments, isolate yourself from flakey 3rd parties and simulate APIs that don’t exist yet.
+- TODO
