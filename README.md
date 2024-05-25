@@ -19,3 +19,35 @@
 - Mockito: vital role in developing testable applications.
 - wireMock: Create stable test and development environments, isolate yourself from flakey 3rd parties and simulate APIs that don’t exist yet.
 - TODO
+#### Docker, DockerCompose & Kubernetes for SpringBoot
+- Build the microservice `mvn clean install`
+- Create a Dockerfile, Build the Image and Tag`docker build -t lawrencejews/gcp-service-registry:0.0.1 .`
+- Run the image `docker run -d -p 8761:8761 --name gcp-service-registry IMAGE ID`
+- `NOTE:` Config-server `docker run -d -p 8761:8761 -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID`
+- `NOTE:` Api-gateway `docker run -d -p 9090:9090 -e CONFIG-SERVER_URL=host.docker.internal -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID`
+- Push the image to dockerhub `docker push lawrencejews/gcp-service-registry:latest`
+- Docker-compose run `docker-compose -f docker-compose.yml up -d` and Remove `docker-compose -f docker-compose.yml remove`
+##### Maven JIB 
+- Jib is a Maven plugin for building Docker and OCI images for your Java applications.
+- Run the build command `mvn clean install jib:build`
+```
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <from>
+                        <image>openjdk:11</image>
+                    </from>
+                    <to>
+                        <image>registry.hub.docker.com/lawrencejews/gcp-service-registry</image>
+                        <tags>${project.version}</tags>
+                    </to>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>    
+```

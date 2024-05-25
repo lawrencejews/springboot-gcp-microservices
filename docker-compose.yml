@@ -1,0 +1,32 @@
+version: '3'
+services:
+  gcp-service-registry:
+    image: 'lawrencejews/gcp-service-registry:0.0.1'
+    container_name: gcp-service-registry
+    ports:
+      - '8761:8761'
+  gcp-config-service:
+    image: 'lawrencejews/gcp-config-service:0.0.1'
+    container_name: gcp-config-service
+    ports:
+      - '9296:9296'
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://gcp-service-registry:8761/eureka
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://configserver:9296/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      - gcp-service-registry
+  gcp-api-gateway:
+    image: 'lawrencejews/gcp-api-gateway:0.0.1'
+    container_name: gcp-api-gateway
+    ports:
+      - '9090:9090'
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://gcp-service-registry:8761/eureka
+      - CONFIG_SERVER_URL=gcp-config-service
+    depends_on:
+      gcp-config-service:
+        condition: service_healthy
