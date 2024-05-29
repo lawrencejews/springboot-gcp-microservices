@@ -23,7 +23,7 @@
 - Build the microservice `mvn clean install`
 - Create a Dockerfile, Build the Image and Tag`docker build -t lawrencejews/gcp-service-registry:0.0.1 .`
 - Run the image `docker run -d -p 8761:8761 --name gcp-service-registry IMAGE ID`
-- `NOTE:` Config-server `docker run -d -p 8761:8761 -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID`
+- `NOTE:` Config-server `docker run -d -p 9296:9296 -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID  b07f484531d1`
 - `NOTE:` Api-gateway `docker run -d -p 9090:9090 -e CONFIG-SERVER_URL=host.docker.internal -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID`
 - Push the image to dockerhub `docker push lawrencejews/gcp-service-registry:latest`
 - Docker-compose run `docker-compose -f docker-compose.yml up -d` and Remove `docker-compose -f docker-compose.yml remove`

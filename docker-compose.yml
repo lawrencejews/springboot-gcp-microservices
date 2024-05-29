@@ -1,12 +1,12 @@
 version: '3'
 services:
   gcp-service-registry:
-    image: 'lawrencejews/gcp-service-registry:0.0.1'
+    image: 'lawrencejews/gcp-service-registry:latest'
     container_name: gcp-service-registry
     ports:
       - '8761:8761'
   gcp-config-service:
-    image: 'lawrencejews/gcp-config-service:0.0.1'
+    image: 'lawrencejews/gcp-config-service:latest'
     container_name: gcp-config-service
     ports:
       - '9296:9296'
@@ -20,7 +20,7 @@ services:
     depends_on:
       - gcp-service-registry
   gcp-api-gateway:
-    image: 'lawrencejews/gcp-api-gateway:0.0.1'
+    image: 'lawrencejews/gcp-api-gateway:latest'
     container_name: gcp-api-gateway
     ports:
       - '9090:9090'
