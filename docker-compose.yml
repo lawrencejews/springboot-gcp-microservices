@@ -11,9 +11,9 @@ services:
     ports:
       - '9296:9296'
     environment:
-      - EUREKA_SERVER_ADDRESS=http://gcp-service-registry:8761/eureka
+      - EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://configserver:9296/actuator/health" ]
+      test: ["CMD", "curl", "-f", "http://gcp-service-registry:9296/actuator/health" ]
       interval: 10s
       timeout: 5s
       retries: 5

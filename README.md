@@ -25,7 +25,7 @@
 - Create a Dockerfile, Build the Image and Tag`docker build -t lawrencejews/gcp-service-registry:latest .`
 - Run the image `docker run -d -p 8761:8761 --name gcp-service-registry IMAGE ID`
 - `NOTE:` Config-server `docker run -d -p 9296:9296 -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID `
-- `NOTE:` Api-gateway `docker run -d -p 9090:9090 -e CONFIG-SERVER_URL=host.docker.internal -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-config-service IMAGE ID`
+- `NOTE:` Api-gateway `docker run -d -p 9090:9090 -e CONFIG-SERVER_URL=host.docker.internal -e EUREKA_SERVER_ADDRESS=http://host.docker.internal:8761/eureka --name gcp-api-service IMAGE ID`
 - Push the image to dockerhub `docker push lawrencejews/gcp-service-registry:latest`
 - Docker-compose run `docker-compose -f docker-compose.yml up -d` and Remove `docker-compose -f docker-compose.yml remove`
 ##### Maven JIB 
@@ -52,3 +52,7 @@
     </build>
 </project>    
 ```
+#### Kubernetes 
+Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications. The open source project is hosted by the Cloud Native Computing Foundation
+`https://kubernetes.io/docs/home/`
+- StatefulSets: Sticky Identity -> Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods

@@ -1,7 +1,7 @@
 package com.lawrencejews.productservice.controller;
 
-import com.lawrencejews.productservice.model.ProductRequest;
-import com.lawrencejews.productservice.model.ProductResponse;
+import com.lawrencejews.productservice.models.ProductRequest;
+import com.lawrencejews.productservice.models.ProductResponse;
 import com.lawrencejews.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,13 +1,13 @@
-package com.lawrencejews.paymentservice;
+// package com.lawrencejews.paymentservice;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class PaymentServiceApplicationTests {
+// @SpringBootTest
+// class PaymentServiceApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }

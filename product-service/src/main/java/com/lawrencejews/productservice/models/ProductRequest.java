@@ -1,4 +1,4 @@
-package com.lawrencejews.productservice.model;
+package com.lawrencejews.productservice.models;
 
 import lombok.Data;
 @Data

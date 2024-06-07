@@ -2,13 +2,12 @@ package com.lawrencejews.productservice.service;
 
 import com.lawrencejews.productservice.entity.Product;
 import com.lawrencejews.productservice.exception.ProductServiceCustomException;
-import com.lawrencejews.productservice.model.ProductRequest;
-import com.lawrencejews.productservice.model.ProductResponse;
+import com.lawrencejews.productservice.models.ProductRequest;
+import com.lawrencejews.productservice.models.ProductResponse;
 import com.lawrencejews.productservice.repository.ProductRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 @Service
