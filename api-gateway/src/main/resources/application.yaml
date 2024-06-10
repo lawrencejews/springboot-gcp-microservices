@@ -2,6 +2,9 @@ server:
   port: 9090
 
 spring:
+  redis: 
+    host: redis
+    port: 6379
   application:
     name: API-GATEWAY
   config:
@@ -11,6 +14,7 @@ spring:
       routes:
         - id: ORDER-SERVICE
           uri: lb://ORDER-SERVICE
+          # uri: http://order-service-svc
           predicates:
             - Path=/order/**
           filters:
@@ -25,6 +29,7 @@ spring:
 
         - id: PAYMENT-SERVICE
           uri: lb://PAYMENT-SERVICE
+          # uri: http://payment-service-svc
           predicates:
             - Path=/payment/**
           filters:
@@ -39,6 +44,7 @@ spring:
 
         - id: PRODUCT-SERVICE
           uri: lb://PRODUCT-SERVICE
+          # uri: http://product-service-svc
           predicates:
             - Path=/product/**
           filters:

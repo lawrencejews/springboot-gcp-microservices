@@ -56,3 +56,11 @@
 Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications. The open source project is hosted by the Cloud Native Computing Foundation
 `https://kubernetes.io/docs/home/`
 - StatefulSets: Sticky Identity -> Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods
+- `NOTE`: Docker images were built locally -> use your images for any project that provisions resources with kubernetes.
+- Deployment of kubernetes resources -> run `kubectl apply -f <FOLDER_NAME>`
+- Delete deployed resources -> run `kubectl delete -f <FOLDER_NAME>`
+- You can start the kubernetes dashboard with `minikube dashboard`
+- Expose the service-load-balancer tunnel with minikube for eureka server `minikube service <LOADBALANCER>`
+- Expose the API-Gateway with minikube -> a `REDIRECT-URL` for OKTA to access the services `minikube service <API_GATEWAY-SVC>`
+- Expose the zipkin load-balancer `minikube service <ZIKPIN-LOADBALANCER>`
+- Kubernetes service utilization instead of eureka service -> changes in the API-GATEWAY `uri: http://order-service-svc` 

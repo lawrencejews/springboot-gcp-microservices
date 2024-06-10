@@ -10,6 +10,7 @@ import com.lawrencejews.orderservice.model.OrderRequest;
 import com.lawrencejews.orderservice.model.OrderResponse;
 import com.lawrencejews.orderservice.repository.OrderRepository;
 import com.lawrencejews.productservice.models.ProductResponse;
+import lombok.Value;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,12 @@ public class OrderServiceImpl implements OrderService {
     private PaymentService paymentService;
     @Autowired
     private RestTemplate restTemplate;
+
+//    @Value("${microservices.product}")
+//    private String productServiceUrl;
+
+//    @Value("${microservices.payment}")
+//    private String paymentServiceUrl;
 
     @Override
     public long placeOrder(OrderRequest orderRequest) {
@@ -89,6 +96,7 @@ public class OrderServiceImpl implements OrderService {
         ProductResponse productResponse
                 = restTemplate.getForObject(
                         "http://PRODUCT-SERVICE/product/" + order.getProductId(),
+                        // productServiceUrl + order.getProductId(),
                 ProductResponse.class
         );
 
@@ -96,6 +104,7 @@ public class OrderServiceImpl implements OrderService {
         PaymentResponse paymentResponse
                 = restTemplate.getForObject(
                         "http://PAYMENT-SERVICE/payment/order/" + order.getId(),
+                        // paymentServiceUrl "order/" + order.getId(),
                 PaymentResponse.class
         );
 
