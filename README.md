@@ -64,3 +64,31 @@ Kubernetes is an open source container orchestration engine for automating deplo
 - Expose the API-Gateway with minikube -> a `REDIRECT-URL` for OKTA to access the services `minikube service <API_GATEWAY-SVC>`
 - Expose the zipkin load-balancer `minikube service <ZIKPIN-LOADBALANCER>`
 - Kubernetes service utilization instead of eureka service -> changes in the API-GATEWAY `uri: http://order-service-svc` 
+
+### Google Cloud - GCP and Jenkins
+Google Cloud is a public cloud vendor with a set of physical assets, such as computers and hard disk drives, and virtual resources, such as virtual machines (VMs), that are contained in data centers around the globe.
+- URL:`https://cloud.google.com/docs/overview`
+- Create a project, billing plan
+- Create a Docker Artifact Repository in google cloud and a Jenkins-Virtual machine for CI/CD operation in Compute Engine.
+- Open the Compute Engine VM and install dependencies:`sudo apt-get install openjdk-11-jdk`, then add jenkins
+```
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key |
+sudo tee \
+/usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+```
+- Install git `sudo apt-get install git` and kubectl `sudo apt-get install kubectl` in the Compute Engine VM
+- Create a cloud NAT gateway for the instance `NOTE: create a router for the gateway` then create firewall rules for ingress traffic for jenkins-CI/CD pipeline.
+- Jenkins will require a password that u can find on the provided path `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` then u can be able to install jenkins plugins. Remember to create a user, config git path and maven in jenkins then add managed settings for github.
+- Create a service account for kubernetes on google cloud from `IAM and Admin` and add it to jenkins for the google kubernetes plugins then upload the key generated from `IAM and Admin`
+- Create the kubernetes clusters `autopilot` and add environment variables in jenkins.
+- Add a github web-hooks on your project for jenkins.
+- The `ms-initial-setup` folder will contain `config-maps`, `mysql-deployment`, `redis-deployment` and `zipkin-deployment` used for a mono-repo config for large projects for service to be deployed on the cloud
+- All services are split into different repos on github with individual jenkins pipelines configurations and github web-hooks.
