@@ -65,7 +65,7 @@ Kubernetes is an open source container orchestration engine for automating deplo
 - Expose the zipkin load-balancer `minikube service <ZIKPIN-LOADBALANCER>`
 - Kubernetes service utilization instead of eureka service -> changes in the API-GATEWAY `uri: http://order-service-svc` 
 
-### Google Cloud - GCP and Jenkins
+#### Google Cloud - GCP and Jenkins
 Google Cloud is a public cloud vendor with a set of physical assets, such as computers and hard disk drives, and virtual resources, such as virtual machines (VMs), that are contained in data centers around the globe.
 - URL:`https://cloud.google.com/docs/overview`
 - Create a project, billing plan
@@ -92,3 +92,4 @@ sudo apt-get install jenkins
 - Add a github web-hooks on your project for jenkins.
 - The `ms-initial-setup` folder will contain `config-maps`, `mysql-deployment`, `redis-deployment` and `zipkin-deployment` used for a mono-repo config for large projects for service to be deployed on the cloud
 - All services are split into different repos on github with individual jenkins pipelines configurations and github web-hooks.
+- PDF for installing sonar and postgresSQL on google compute engine project_vm.
